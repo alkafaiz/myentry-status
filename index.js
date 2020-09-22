@@ -7,6 +7,8 @@ exports.main = async (req, res) => {
   const response = await getStatus();
 
   if (response.success && !response.isUpdated) {
-    await sendEmail();
+    const emailSentId = await sendEmail();
+    const message = `email sent id: ${emailSentId}`;
+    res.status(200).send(message);
   }
 };
