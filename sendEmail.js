@@ -11,7 +11,7 @@ myOAuth2Client.setCredentials({
   refresh_token: process.env.REFRESH_TOKEN
 });
 
-exports.sendEmail = async () => {
+exports.sendEmail = async html => {
   const myAccessToken = myOAuth2Client.getAccessToken();
 
   let transporter = nodemailer.createTransport({
@@ -28,12 +28,12 @@ exports.sendEmail = async () => {
 
   let info = await transporter.sendMail({
     from: '"MyEntry-WATCH" <alkafaiz99@gmail.com>',
-    to: "faiz@checknow.org",
+    to: "faiz.bro99@gmail.com",
     subject: "MyEntry Status Update",
     text:
       "There has been a development in your MyEntry Application status, go check now!",
-    html:
-      "<em>* Testing *</em><br/><br/><b>There has been a development in your MyEntry Application status, go check now!</b><br/><em>computer generated notification developed by <span><a href='mailto:alkafaiz99@gmail.com'>alkafaiz</a></span>.<em/>"
+    html: html
+    // "<em>* Testing *</em><br/><br/><b>There has been a development in your MyEntry Application status, go check now!</b><br/><em>computer generated notification developed by <span><a href='mailto:alkafaiz99@gmail.com'>alkafaiz</a></span>.<em/>"
   });
 
   console.log("Message sent: %s", info.messageId);

@@ -36,7 +36,7 @@ exports.getStatus = async () => {
       if (isUpdated) console.log("There's been an update on the status");
       else console.log("No status update");
 
-      return { success: true, isUpdated };
+      return { success: true, isUpdated, html: response.data };
     })
     .catch(function(error) {
       console.log(error);
