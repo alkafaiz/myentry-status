@@ -11,6 +11,9 @@ myOAuth2Client.setCredentials({
   refresh_token: process.env.REFRESH_TOKEN
 });
 
+// set your target email to notify
+const TARGET_EMAIL = "[ YOUR_TARGET_EMAIL ]";
+
 exports.sendEmail = async html => {
   const myAccessToken = myOAuth2Client.getAccessToken();
 
@@ -27,8 +30,8 @@ exports.sendEmail = async html => {
   });
 
   let info = await transporter.sendMail({
-    from: '"MyEntry-WATCH" <alkafaiz99@gmail.com>',
-    to: "faiz.bro99@gmail.com",
+    from: `"MyEntry-WATCH" <${process.env.MYEMAIL}>`,
+    to: TARGET_EMAIL,
     subject: "MyEntry Status Update",
     text:
       "There has been a development in your MyEntry Application status, go check now!",

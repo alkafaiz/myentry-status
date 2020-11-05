@@ -8,9 +8,11 @@ function isDifferent(newUpdate) {
   return !isProgress;
 }
 
+const REF_NUMBER = "[ YOUR REF_CODE NUMBER ]";
+
 exports.getStatus = async () => {
   const data = new FormData();
-  data.append("ref_no", "4947-4RGF");
+  data.append("ref_no", REF_NUMBER);
 
   // creating agent to ignore SSL error
   const agent = new https.Agent({
